@@ -1,91 +1,12 @@
 import { db } from "@repo/database";
 import { formsTable, fieldsTable } from "@repo/database/schema";
-import { eq, and, asc } from "drizzle-orm";
+import { fieldSchema, type Field } from "@repo/database/validators/field";
+import { eq, and, asc, sql } from "drizzle-orm";
 import type { SelectForm, SelectField } from "@repo/database/schema";
 import SlugService from "../slug/index";
 import { z } from "zod";
 
-// ---------------------------------------------------------------------------
-// Field config schemas (mirrors packages/trpc/server/routes/fields/model.ts)
-// These are duplicated here to avoid a circular dependency between
-// @repo/services and @repo/trpc.
-// ---------------------------------------------------------------------------
-
-const shortTextConfigSchema = z.object({
-  maxLength: z.number().int().min(1).max(10000).optional(),
-});
-
-const longTextConfigSchema = z.object({
-  maxLength: z.number().int().min(1).max(10000).optional(),
-});
-
-const emailConfigSchema = z.object({});
-
-const numberConfigSchema = z
-  .object({
-    min: z.number().optional(),
-    max: z.number().optional(),
-  })
-  .refine((c) => c.min == null || c.max == null || c.min <= c.max, {
-    message: "min_gt_max",
-  });
-
-const optionSchema = z.object({
-  id: z.string().min(1),
-  label: z.string().min(1).max(200),
-});
-
-const singleSelectConfigSchema = z.object({
-  options: z.array(optionSchema).min(1),
-});
-
-const multiSelectConfigSchema = z.object({
-  options: z.array(optionSchema).min(1),
-});
-
-const dropdownConfigSchema = z.object({
-  options: z.array(optionSchema).min(1),
-});
-
-const checkboxConfigSchema = z.object({});
-
-const ratingConfigSchema = z.object({
-  scaleMax: z.number().int().min(2).max(10),
-});
-
-const dateConfigSchema = z.object({});
-
-const fieldCommonSchema = z.object({
-  id: z.string().uuid().optional(),
-  label: z.string().trim().min(1).max(200),
-  description: z.string().nullable().optional(),
-  required: z.boolean().default(false),
-  order: z.number().int().min(0),
-  page: z.number().int().min(0).default(0),
-  showIf: z
-    .object({
-      fieldId: z.string().uuid(),
-      op: z.enum(["eq", "neq", "contains", "gt", "lt"]),
-      value: z.union([z.string(), z.number(), z.boolean()]),
-    })
-    .nullable()
-    .optional(),
-});
-
-export const fieldSchema = z.discriminatedUnion("type", [
-  fieldCommonSchema.extend({ type: z.literal("short_text"), config: shortTextConfigSchema }),
-  fieldCommonSchema.extend({ type: z.literal("long_text"), config: longTextConfigSchema }),
-  fieldCommonSchema.extend({ type: z.literal("email"), config: emailConfigSchema }),
-  fieldCommonSchema.extend({ type: z.literal("number"), config: numberConfigSchema }),
-  fieldCommonSchema.extend({ type: z.literal("single_select"), config: singleSelectConfigSchema }),
-  fieldCommonSchema.extend({ type: z.literal("multi_select"), config: multiSelectConfigSchema }),
-  fieldCommonSchema.extend({ type: z.literal("checkbox"), config: checkboxConfigSchema }),
-  fieldCommonSchema.extend({ type: z.literal("dropdown"), config: dropdownConfigSchema }),
-  fieldCommonSchema.extend({ type: z.literal("rating"), config: ratingConfigSchema }),
-  fieldCommonSchema.extend({ type: z.literal("date"), config: dateConfigSchema }),
-]);
-
-export type FieldInput = z.infer<typeof fieldSchema>;
+export type FieldInput = Field;
 
 // ---------------------------------------------------------------------------
 // Types
@@ -307,9 +228,8 @@ class FormService {
       .limit(pageSize)
       .offset(offset);
 
-    // Count total matching rows
-    const allRows = await db
-      .select({ id: formsTable.id })
+    const [countResult] = await db
+      .select({ count: sql<number>`count(*)::int` })
       .from(formsTable)
       .where(whereClause);
 
@@ -317,7 +237,7 @@ class FormService {
       items: rows,
       page,
       pageSize,
-      total: allRows.length,
+      total: countResult?.count ?? 0,
     };
   }
 

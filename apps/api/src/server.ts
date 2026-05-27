@@ -18,7 +18,7 @@ export const app = express();
 app.set("trust proxy", 1);
 
 const openApiOptions = {
-  title: "Formlane OpenAPI",
+  title: "Formlane API",
   version: "1.0.0",
   baseUrl: env.BASE_URL.concat("/api"),
 };
@@ -81,11 +81,11 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.get("/", (req, res) => {
-  return res.json({ message: "Streamyst is up and running..." });
+  return res.json({ message: "Formlane is up and running..." });
 });
 
 app.get("/health", (req, res) => {
-  return res.json({ message: "Streamyst server is healthy", healthy: true });
+  return res.json({ message: "Formlane server is healthy", healthy: true });
 });
 
 logger.debug(`openapi.json: ${env.BASE_URL}/openapi.json`);

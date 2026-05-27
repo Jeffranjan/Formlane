@@ -6,7 +6,7 @@ import { responseService } from "@repo/services/response";
 import FormService from "@repo/services/form";
 import { db } from "@repo/database";
 import { answersTable, responsesTable } from "@repo/database/schema";
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, inArray } from "drizzle-orm";
 
 const formService = new FormService();
 
@@ -275,21 +275,24 @@ export const responsesRouter = router({
         .where(eq(responsesTable.formId, input.formId))
         .orderBy(desc(responsesTable.createdAt));
 
-      // Load all answers for these responses
+      // Load all answers for these responses in a single query
       const responseIds: string[] = responses.map((r) => r.id);
       const answersByResponseId = new Map<string, Map<string, unknown>>();
 
-      for (const responseId of responseIds) {
-        const answers = await db
+      if (responseIds.length > 0) {
+        const allAnswers = await db
           .select()
           .from(answersTable)
-          .where(eq(answersTable.responseId, responseId));
+          .where(inArray(answersTable.responseId, responseIds));
 
-        const fieldValueMap = new Map<string, unknown>();
-        for (const answer of answers) {
+        for (const answer of allAnswers) {
+          let fieldValueMap = answersByResponseId.get(answer.responseId);
+          if (!fieldValueMap) {
+            fieldValueMap = new Map<string, unknown>();
+            answersByResponseId.set(answer.responseId, fieldValueMap);
+          }
           fieldValueMap.set(answer.fieldId, answer.value);
         }
-        answersByResponseId.set(responseId, fieldValueMap);
       }
 
       // CSV escape: wrap in double-quotes if value contains comma, newline, or double-quote

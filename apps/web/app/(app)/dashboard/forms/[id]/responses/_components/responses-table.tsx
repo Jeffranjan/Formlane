@@ -36,8 +36,6 @@ import { Label } from "~/components/ui/label";
 import { trpc } from "~/trpc/client";
 import { cn } from "~/lib/utils";
 
-// ─── Types ─────────────────────────────────────────────────────────────────
-
 interface FormField {
   id: string;
   label: string;
@@ -68,16 +66,12 @@ interface ResponsesTableProps {
   initialTotal: number;
 }
 
-// ─── Helpers ───────────────────────────────────────────────────────────────
-
 function formatAnswerValue(value: unknown): string {
   if (value === null || value === undefined) return "—";
   if (Array.isArray(value)) return value.join(", ");
   if (typeof value === "object") return JSON.stringify(value);
   return String(value);
 }
-
-// ─── Component ─────────────────────────────────────────────────────────────
 
 export function ResponsesTable({
   formId,
@@ -168,7 +162,7 @@ export function ResponsesTable({
 
   return (
     <div className="space-y-4">
-      {/* ── Filter bar ─────────────────────────────────────────── */}
+      {/* Filter bar */}
       <div className="surface-1 rounded-2xl">
         <div className="flex items-center justify-between px-5 py-3">
           <div className="flex items-center gap-2">
@@ -200,7 +194,7 @@ export function ResponsesTable({
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden"
             >
-              <div className="border-t border-white/[0.05] px-5 py-4">
+              <div className="border-t border-white/5 px-5 py-4">
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                   <div className="space-y-1.5">
                     <Label className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -292,7 +286,7 @@ export function ResponsesTable({
         </AnimatePresence>
       </div>
 
-      {/* ── Summary ────────────────────────────────────────────── */}
+      {/* Summary */}
       <div className="flex items-center justify-between px-1">
         <p className="text-sm text-muted-foreground">
           {query.isFetching ? (
@@ -337,7 +331,7 @@ export function ResponsesTable({
         )}
       </div>
 
-      {/* ── Table ──────────────────────────────────────────────── */}
+      {/* Table */}
       {responses.length === 0 ? (
         <div className="surface-1 rounded-2xl px-8 py-16 text-center">
           <p className="text-sm text-muted-foreground">
@@ -350,7 +344,7 @@ export function ResponsesTable({
         <div className="surface-1 overflow-hidden rounded-2xl">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/[0.05] bg-white/[0.015]">
+              <tr className="border-b border-white/5 bg-white/1.5">
                 <th className="px-5 py-3 text-left text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground/80">
                   Submitted
                 </th>
@@ -366,7 +360,7 @@ export function ResponsesTable({
               {responses.map((response) => (
                 <tr
                   key={response.id}
-                  className="group border-b border-white/[0.04] transition-colors last:border-b-0 hover:bg-white/[0.025]"
+                  className="group border-b border-white/4 transition-colors last:border-b-0 hover:bg-white/2.5"
                 >
                   <td className="whitespace-nowrap px-5 py-3.5 align-top text-sm tabular-nums text-muted-foreground">
                     {response.createdAt
@@ -436,8 +430,6 @@ export function ResponsesTable({
   );
 }
 
-// ─── Answer summary cell ──────────────────────────────────────────────────
-
 function AnswerSummary({
   answers,
   fields,
@@ -448,9 +440,7 @@ function AnswerSummary({
   const [expanded, setExpanded] = useState(false);
 
   if (answers.length === 0) {
-    return (
-      <span className="italic text-muted-foreground">No answers</span>
-    );
+    return <span className="italic text-muted-foreground">No answers</span>;
   }
 
   const visibleAnswers = expanded ? answers : answers.slice(0, 3);
@@ -464,7 +454,7 @@ function AnswerSummary({
         return (
           <span
             key={a.id}
-            className="inline-flex items-center gap-1 rounded-md border border-white/[0.05] bg-white/[0.025] px-2 py-0.5 text-[12px]"
+            className="inline-flex items-center gap-1 rounded-md border border-white/5 bg-white/2.5 px-2 py-0.5 text-[12px]"
             title={`${label}: ${formatAnswerValue(a.value)}`}
           >
             <span className="shrink-0 text-muted-foreground/80">{label}:</span>
@@ -478,7 +468,7 @@ function AnswerSummary({
         <button
           type="button"
           onClick={() => setExpanded(true)}
-          className="inline-flex items-center rounded-md border border-white/[0.10] bg-white/[0.04] px-2 py-0.5 text-[12px] font-medium text-foreground/80 transition-colors hover:bg-white/[0.08] hover:text-foreground cursor-pointer"
+          className="inline-flex cursor-pointer items-center rounded-md border border-white/10 bg-white/4 px-2 py-0.5 text-[12px] font-medium text-foreground/80 transition-colors hover:bg-white/8 hover:text-foreground"
         >
           +{overflow} more
         </button>
@@ -487,7 +477,7 @@ function AnswerSummary({
         <button
           type="button"
           onClick={() => setExpanded(false)}
-          className="inline-flex items-center rounded-md border border-white/[0.10] bg-white/[0.04] px-2 py-0.5 text-[12px] font-medium text-muted-foreground transition-colors hover:bg-white/[0.08] hover:text-foreground cursor-pointer"
+          className="inline-flex cursor-pointer items-center rounded-md border border-white/10 bg-white/4 px-2 py-0.5 text-[12px] font-medium text-muted-foreground transition-colors hover:bg-white/8 hover:text-foreground"
         >
           Show less
         </button>

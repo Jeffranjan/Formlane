@@ -1,12 +1,20 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { api } from "~/trpc/server";
 import { AmbientBackground } from "~/components/chrome/ambient-background";
 import { Logo } from "~/components/chrome/logo";
 
-export default function AuthLayout({
+export default async function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { user } = await api.auth.me.query();
+
+  if (user) {
+    redirect("/dashboard");
+  }
+
   return (
     <div className="relative flex min-h-screen flex-col px-4">
       <AmbientBackground variant="marketing" />

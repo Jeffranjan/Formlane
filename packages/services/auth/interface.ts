@@ -1,5 +1,4 @@
-import type { SelectSession } from "@repo/database/schema";
-import type { SelectUser } from "@repo/database/schema";
+import type { SelectSession, SelectUser } from "@repo/database/schema";
 
 /**
  * The resolved session payload returned by AuthService.resolveSession.

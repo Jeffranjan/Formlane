@@ -1,6 +1,6 @@
 import { db } from "@repo/database";
 import { responsesTable, answersTable } from "@repo/database/schema";
-import { eq, and, desc, gte, lte, sql } from "drizzle-orm";
+import { eq, and, desc, gte, lte, sql, inArray } from "drizzle-orm";
 import type { SelectResponse, SelectAnswer } from "@repo/database/schema";
 
 export interface NormalizedAnswer {
@@ -192,14 +192,10 @@ export class ResponseService {
     let allAnswers: SelectAnswer[] = [];
 
     if (responseIds.length > 0) {
-      // Fetch answers for each response (batched)
-      for (const responseId of responseIds) {
-        const answers = await db
-          .select()
-          .from(answersTable)
-          .where(eq(answersTable.responseId, responseId));
-        allAnswers = allAnswers.concat(answers);
-      }
+      allAnswers = await db
+        .select()
+        .from(answersTable)
+        .where(inArray(answersTable.responseId, responseIds));
     }
 
     // Group answers by responseId

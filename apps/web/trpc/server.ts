@@ -12,20 +12,10 @@ async function getCookieHeaders(): Promise<Record<string, string>> {
       .join("; ");
     return cookieHeader ? { Cookie: cookieHeader } : {};
   } catch {
-    // cookies() throws outside of a request context (e.g. during static generation)
     return {};
   }
 }
 
 export const api = createTRPCProxyClient<ServerRouter>({
   links: [createTRPCHttpBatchClientClient({ headers: getCookieHeaders })],
-});
-
-export const apiStreaming = createTRPCProxyClient<ServerRouter>({
-  links: [
-    createTRPCHttpBatchClientClient({
-      enableStreaming: true,
-      headers: getCookieHeaders,
-    }),
-  ],
 });

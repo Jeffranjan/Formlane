@@ -30,7 +30,6 @@ export const GlobalProviders: React.FC<{ children: React.ReactNode }> = ({
       <NextThemesProvider
         attribute="class"
         defaultTheme="dark"
-        forcedTheme="dark"
         enableSystem={false}
         disableTransitionOnChange
       >

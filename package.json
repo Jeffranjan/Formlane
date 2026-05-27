@@ -22,7 +22,6 @@
     "node": ">=18"
   },
   "dependencies": {
-    "dotenv-cli": "^11.0.0",
-    "motion": "^12.23.6"
+    "dotenv-cli": "^11.0.0"
   }
 }
