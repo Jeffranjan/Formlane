@@ -46,14 +46,25 @@ function getOpenApiDocument() {
   return _cachedOpenApiDocument;
 }
 
-if (env.NODE_ENV !== "prod") {
-  app.use(
-    cors({
-      origin: ["http://localhost:3000", "http://localhost:3001"],
-      credentials: true,
-    }),
-  );
-}
+// Build the allowed origins list from env — always include localhost for dev,
+// plus any production frontend URL set via ALLOWED_ORIGINS (comma-separated).
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  ...(env.ALLOWED_ORIGINS ? env.ALLOWED_ORIGINS.split(",").map((o) => o.trim()) : []),
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (curl, Postman, server-to-server)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      callback(new Error(`CORS: origin ${origin} not allowed`));
+    },
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 

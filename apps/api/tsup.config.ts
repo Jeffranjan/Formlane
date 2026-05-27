@@ -2,7 +2,9 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: ["./src/index.ts"],
-  noExternal: ["@teachyst"], // transpile packages starting with `@teachyst` and their dependencies
+  // Bundle all @repo/* workspace packages into the output so Render
+  // doesn't need to resolve them from node_modules at runtime.
+  noExternal: [/@repo\/.*/],
   splitting: false,
   bundle: true,
   outDir: "./dist",
