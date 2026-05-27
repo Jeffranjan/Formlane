@@ -141,7 +141,6 @@ export const authRouter = router({
         summary: "Invalidate the current session",
       },
     })
-    .input(z.undefined())
     .output(z.object({ success: z.boolean() }))
     .mutation(async ({ ctx }) => {
       if (ctx.session) {
@@ -166,7 +165,6 @@ export const authRouter = router({
         summary: "Return the currently authenticated Creator",
       },
     })
-    .input(z.undefined())
     .output(meResultSchema)
     .query(({ ctx }) => {
       return { user: ctx.user };
@@ -187,7 +185,6 @@ export const authRouter = router({
         summary: "Get the Google OAuth authorization URL",
       },
     })
-    .input(z.undefined())
     .output(z.object({ url: z.string().nullable() }))
     .query(() => {
       const url = authService.googleGetAuthUrl();

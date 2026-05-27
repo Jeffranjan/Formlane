@@ -162,7 +162,10 @@ export function AppNav({ user }: AppNavProps) {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => signOut.mutate()}
+              onSelect={(e) => {
+                e.preventDefault();
+                signOut.mutate(undefined);
+              }}
               disabled={signOut.isPending}
               variant="destructive"
             >
