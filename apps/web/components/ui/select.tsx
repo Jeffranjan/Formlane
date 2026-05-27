@@ -42,7 +42,7 @@ function SelectTrigger({
         "border-white/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]",
         "transition-[border-color,box-shadow,background-color] duration-200",
         "hover:border-white/[0.14] hover:bg-white/[0.05]",
-        "focus-visible:outline-none focus-visible:border-indigo-400/60 focus-visible:shadow-[0_0_0_3px_rgba(99,102,241,0.18)]",
+        "focus-visible:outline-none focus-visible:border-amber-400/60 focus-visible:shadow-[0_0_0_3px_rgba(245,158,11,0.18)]",
         "aria-invalid:border-red-500/60 aria-invalid:shadow-[0_0_0_3px_rgba(239,68,68,0.15)]",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "data-[size=default]:h-10 data-[size=sm]:h-8",

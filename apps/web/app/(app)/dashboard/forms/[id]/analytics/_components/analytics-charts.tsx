@@ -58,12 +58,12 @@ interface AnalyticsChartsProps {
 const CHART_GRADIENT_ID = "chai-bar-gradient";
 
 const CHART_PALETTE = [
-  "#6366f1", // indigo
-  "#8b5cf6", // violet
-  "#06b6d4", // cyan
-  "#a78bfa", // light violet
-  "#22d3ee", // bright cyan
-  "#818cf8", // light indigo
+  "#f59e0b", // amber 500
+  "#fbb724", // amber 400 / gold
+  "#d97706", // amber 600 / deep
+  "#fcc34d", // gold light
+  "#fde047", // yellow bright
+  "#fbbf24", // amber 300
 ];
 
 function formatNumber(n: number): string {
@@ -125,8 +125,8 @@ function BarChartCard({
         <BarChart data={data} margin={{ top: 8, right: 12, left: -12, bottom: 4 }}>
           <defs>
             <linearGradient id={CHART_GRADIENT_ID} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#a78bfa" stopOpacity={1} />
-              <stop offset="100%" stopColor="#6366f1" stopOpacity={0.65} />
+              <stop offset="0%" stopColor="#fcc34d" stopOpacity={1} />
+              <stop offset="100%" stopColor="#f59e0b" stopOpacity={0.65} />
             </linearGradient>
           </defs>
           <XAxis

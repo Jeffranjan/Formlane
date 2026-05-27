@@ -21,7 +21,7 @@ export function HeroPreview() {
         className="pointer-events-none absolute -inset-x-12 -top-8 bottom-0 -z-10"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(99,102,241,0.30), transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(245,158,11,0.30), transparent 70%)",
         }}
       />
 
@@ -73,7 +73,7 @@ export function HeroPreview() {
                   className="flex items-center justify-between gap-4 py-2.5"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex size-7 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/70 to-violet-500/70 text-[11px] font-semibold text-white">
+                    <span className="inline-flex size-7 items-center justify-center rounded-full bg-gradient-to-br from-amber-500/70 to-amber-400/70 text-[11px] font-semibold text-white">
                       {row.email[0]?.toUpperCase()}
                     </span>
                     <div>
@@ -144,9 +144,9 @@ function FakeChart() {
               duration: 0.6,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="flex-1 rounded-t-md bg-gradient-to-t from-indigo-500/60 to-violet-400/90"
+            className="flex-1 rounded-t-md bg-gradient-to-t from-amber-500/60 to-amber-400/90"
             style={{
-              boxShadow: "0 0 12px -2px rgba(139,92,246,0.45)",
+              boxShadow: "0 0 12px -2px rgba(217,119,6,0.45)",
             }}
           />
         );

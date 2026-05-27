@@ -81,7 +81,7 @@ export default async function DashboardPage() {
           icon={<FileText className="size-4" />}
           label="Total forms"
           value={totalForms}
-          tint="indigo"
+          tint="amber"
         />
         <Metric
           icon={<Sparkles className="size-4" />}
@@ -93,7 +93,7 @@ export default async function DashboardPage() {
           icon={<TrendingUp className="size-4" />}
           label="Total responses"
           value={totalResponses}
-          tint="violet"
+          tint="gold"
         />
       </section>
 
@@ -138,7 +138,7 @@ export default async function DashboardPage() {
                     {/* Title + slug */}
                     <Link
                       href={`/dashboard/forms/${form.id}/edit`}
-                      className="min-w-0 flex-1 outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/60"
+                      className="min-w-0 flex-1 outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60"
                     >
                       <p className="truncate text-[15px] font-medium tracking-tight">
                         {form.title}
@@ -215,13 +215,13 @@ function Metric({
   icon: React.ReactNode;
   label: string;
   value: number;
-  tint: "indigo" | "violet" | "emerald";
+  tint: "amber" | "gold" | "emerald";
 }) {
   const tints = {
-    indigo:
-      "border-indigo-500/15 from-indigo-500/15 to-indigo-500/0 text-indigo-200",
-    violet:
-      "border-violet-500/15 from-violet-500/15 to-violet-500/0 text-violet-200",
+    amber:
+      "border-amber-500/15 from-amber-500/15 to-amber-500/0 text-amber-200",
+    gold:
+      "border-amber-400/15 from-amber-400/15 to-amber-400/0 text-amber-200",
     emerald:
       "border-emerald-500/15 from-emerald-500/15 to-emerald-500/0 text-emerald-200",
   } as const;
@@ -254,7 +254,7 @@ function Metric({
 function EmptyState() {
   return (
     <div className="surface-1 mx-auto flex max-w-xl flex-col items-center justify-center gap-4 rounded-3xl px-8 py-16 text-center">
-      <div className="flex size-12 items-center justify-center rounded-2xl border border-white/[0.06] bg-gradient-to-br from-indigo-500/15 to-violet-500/15 text-indigo-200">
+      <div className="flex size-12 items-center justify-center rounded-2xl border border-white/[0.06] bg-gradient-to-br from-amber-500/15 to-amber-400/15 text-amber-200">
         <Plus className="size-5" />
       </div>
       <div>

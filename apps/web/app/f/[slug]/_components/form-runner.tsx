@@ -198,7 +198,7 @@ function FieldInput({ field, value, onChange, error, disabled }: FieldInputProps
                 className={cn(
                   "group flex cursor-pointer items-center gap-3 rounded-xl border bg-white/[0.02] px-4 py-3 text-base transition-all",
                   isSelected
-                    ? "border-indigo-400/50 bg-indigo-500/10 shadow-[0_0_0_3px_rgba(99,102,241,0.18)]"
+                    ? "border-amber-400/50 bg-amber-500/10 shadow-[0_0_0_3px_rgba(245,158,11,0.18)]"
                     : "border-white/[0.06] hover:border-white/[0.14] hover:bg-white/[0.04]",
                 )}
               >
@@ -229,7 +229,7 @@ function FieldInput({ field, value, onChange, error, disabled }: FieldInputProps
                 className={cn(
                   "flex cursor-pointer items-center gap-3 rounded-xl border bg-white/[0.02] px-4 py-3 text-base transition-all",
                   isSelected
-                    ? "border-indigo-400/50 bg-indigo-500/10 shadow-[0_0_0_3px_rgba(99,102,241,0.18)]"
+                    ? "border-amber-400/50 bg-amber-500/10 shadow-[0_0_0_3px_rgba(245,158,11,0.18)]"
                     : "border-white/[0.06] hover:border-white/[0.14] hover:bg-white/[0.04]",
                 )}
               >
@@ -261,7 +261,7 @@ function FieldInput({ field, value, onChange, error, disabled }: FieldInputProps
           className={cn(
             "flex cursor-pointer items-center gap-3 rounded-xl border bg-white/[0.02] px-4 py-3 text-base transition-all",
             value
-              ? "border-indigo-400/50 bg-indigo-500/10"
+              ? "border-amber-400/50 bg-amber-500/10"
               : "border-white/[0.06] hover:border-white/[0.14]",
           )}
         >
@@ -320,7 +320,7 @@ function FieldInput({ field, value, onChange, error, disabled }: FieldInputProps
                 aria-label={`${star} star${star !== 1 ? "s" : ""}${isPressed ? " (selected)" : ""}`}
                 className={cn(
                   "group inline-flex size-11 items-center justify-center rounded-xl border transition-all",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/60",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60",
                   isPressed
                     ? "border-amber-400/40 bg-amber-400/10"
                     : "border-white/[0.06] bg-white/[0.02] hover:border-white/[0.14] hover:bg-white/[0.04]",
@@ -483,7 +483,7 @@ export function FormRunner({ form, slug }: FormRunnerProps) {
           initial={{ width: "0%" }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="h-full bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 shadow-[0_0_12px_rgba(139,92,246,0.5)]"
+          className="h-full bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 shadow-[0_0_12px_rgba(217,119,6,0.5)]"
         />
       </motion.div>
 
@@ -499,7 +499,7 @@ export function FormRunner({ form, slug }: FormRunnerProps) {
           className="pointer-events-none absolute inset-0 -z-10"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(99,102,241,0.15), transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245,158,11,0.15), transparent 70%)",
           }}
         />
 

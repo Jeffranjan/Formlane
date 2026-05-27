@@ -19,11 +19,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: [
-          "text-white border border-white/10 overflow-hidden",
-          "bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500",
-          "shadow-[0_0_0_1px_rgba(99,102,241,0.18),0_8px_24px_-10px_rgba(99,102,241,0.55)]",
-          "hover:-translate-y-px hover:shadow-[0_0_0_1px_rgba(139,92,246,0.30),0_14px_34px_-12px_rgba(139,92,246,0.7)]",
-          "before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_50%)] before:pointer-events-none",
+          "text-black border border-amber-400/20 overflow-hidden",
+          "bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400",
+          "shadow-[0_0_0_1px_rgba(245,158,11,0.18),0_8px_24px_-10px_rgba(245,158,11,0.55)]",
+          "hover:-translate-y-px hover:shadow-[0_0_0_1px_rgba(251,183,36,0.30),0_14px_34px_-12px_rgba(245,158,11,0.7)]",
+          "before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.30),transparent_50%)] before:pointer-events-none",
           "after:absolute after:inset-0 after:-translate-x-full after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent after:pointer-events-none after:transition-transform after:duration-700 after:ease-out hover:after:translate-x-full",
         ].join(" "),
         destructive:
@@ -37,7 +37,7 @@ const buttonVariants = cva(
         link:
           "text-foreground underline-offset-4 hover:underline px-0 h-auto",
         soft:
-          "border border-indigo-500/25 bg-indigo-500/10 text-indigo-200 hover:bg-indigo-500/15 hover:border-indigo-500/40",
+          "border border-amber-500/25 bg-amber-500/10 text-amber-200 hover:bg-amber-500/15 hover:border-amber-500/40",
       },
       size: {
         default: "h-9 px-4 has-[>svg]:px-3.5",

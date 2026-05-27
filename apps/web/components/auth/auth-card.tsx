@@ -23,7 +23,7 @@ export function AuthCard({ title, description, children, footer }: AuthCardProps
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(99,102,241,0.18), transparent 70%)",
+            "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(245,158,11,0.18), transparent 70%)",
         }}
       />
       <div className="space-y-1.5">

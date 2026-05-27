@@ -561,7 +561,7 @@ export function FormEditor({ initialForm }: FormEditorProps) {
       {/* ── Form details ────────────────────────────────────── */}
       <section className="surface-1 mb-6 space-y-4 rounded-2xl p-6">
         <div className="flex items-center gap-2">
-          <Sparkles className="size-3.5 text-indigo-300" />
+          <Sparkles className="size-3.5 text-amber-300" />
           <h2 className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground/80">
             Form details
           </h2>
@@ -575,7 +575,7 @@ export function FormEditor({ initialForm }: FormEditorProps) {
               <Input
                 {...field}
                 placeholder="Untitled form"
-                className="h-12 border-transparent bg-transparent px-0 text-2xl font-display font-semibold tracking-tight shadow-none hover:border-transparent focus-visible:border-indigo-400/40 focus-visible:bg-white/[0.02] focus-visible:px-3"
+                className="h-12 border-transparent bg-transparent px-0 text-2xl font-display font-semibold tracking-tight shadow-none hover:border-transparent focus-visible:border-amber-400/40 focus-visible:bg-white/[0.02] focus-visible:px-3"
               />
             )}
           />
@@ -587,7 +587,7 @@ export function FormEditor({ initialForm }: FormEditorProps) {
                 {...field}
                 placeholder="Add a short description to set the tone…"
                 rows={2}
-                className="border-transparent bg-transparent px-0 text-base shadow-none focus-visible:border-indigo-400/40 focus-visible:bg-white/[0.02] focus-visible:px-3"
+                className="border-transparent bg-transparent px-0 text-base shadow-none focus-visible:border-amber-400/40 focus-visible:bg-white/[0.02] focus-visible:px-3"
               />
             )}
           />
@@ -681,7 +681,7 @@ export function FormEditor({ initialForm }: FormEditorProps) {
                         <Input
                           {...f}
                           placeholder="Field label"
-                          className="h-9 border-transparent bg-transparent px-0 text-base font-medium shadow-none focus-visible:border-indigo-400/40 focus-visible:bg-white/[0.02] focus-visible:px-3"
+                          className="h-9 border-transparent bg-transparent px-0 text-base font-medium shadow-none focus-visible:border-amber-400/40 focus-visible:bg-white/[0.02] focus-visible:px-3"
                         />
                       )}
                     />
@@ -693,7 +693,7 @@ export function FormEditor({ initialForm }: FormEditorProps) {
                           {...f}
                           value={f.value ?? ""}
                           placeholder="Helper text (optional)"
-                          className="h-8 border-transparent bg-transparent px-0 text-sm text-muted-foreground shadow-none focus-visible:border-indigo-400/40 focus-visible:bg-white/[0.02] focus-visible:px-3"
+                          className="h-8 border-transparent bg-transparent px-0 text-sm text-muted-foreground shadow-none focus-visible:border-amber-400/40 focus-visible:bg-white/[0.02] focus-visible:px-3"
                         />
                       )}
                     />

@@ -175,7 +175,7 @@ export function ResponsesTable({
             <Filter className="size-3.5 text-muted-foreground" />
             <span className="text-sm font-medium">Filters</span>
             {hasActiveFilter && (
-              <Badge className="border-indigo-500/30 bg-indigo-500/15 text-indigo-200">
+              <Badge className="border-amber-500/30 bg-amber-500/15 text-amber-200">
                 Active
               </Badge>
             )}

@@ -67,7 +67,7 @@ export default async function AnalyticsPage({ params }: AnalyticsPageProps) {
       {/* Hero */}
       <header className="mb-10">
         <div className="flex items-start gap-4">
-          <div className="flex size-11 items-center justify-center rounded-xl border border-white/[0.06] bg-gradient-to-br from-indigo-500/15 to-violet-500/15 text-indigo-200">
+          <div className="flex size-11 items-center justify-center rounded-xl border border-white/[0.06] bg-gradient-to-br from-amber-500/15 to-amber-400/15 text-amber-200">
             <BarChart3 className="size-5" />
           </div>
           <div className="min-w-0">
@@ -90,13 +90,13 @@ export default async function AnalyticsPage({ params }: AnalyticsPageProps) {
           icon={<Sparkles className="size-4" />}
           label="Total responses"
           value={analytics.totalCount}
-          tint="indigo"
+          tint="amber"
         />
         <KpiCard
           icon={<Clock className="size-4" />}
           label="Last 7 days"
           value={analytics.last7DaysCount}
-          tint="violet"
+          tint="gold"
         />
       </section>
 
@@ -137,13 +137,13 @@ function KpiCard({
   icon: React.ReactNode;
   label: string;
   value: number;
-  tint: "indigo" | "violet";
+  tint: "amber" | "gold";
 }) {
   const tints = {
-    indigo:
-      "border-indigo-500/15 from-indigo-500/15 to-indigo-500/0 text-indigo-200",
-    violet:
-      "border-violet-500/15 from-violet-500/15 to-violet-500/0 text-violet-200",
+    amber:
+      "border-amber-500/15 from-amber-500/15 to-amber-500/0 text-amber-200",
+    gold:
+      "border-amber-400/15 from-amber-400/15 to-amber-400/0 text-amber-200",
   } as const;
 
   return (
@@ -153,9 +153,9 @@ function KpiCard({
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            tint === "indigo"
-              ? "radial-gradient(280px circle at 100% 0%, rgba(99,102,241,0.10), transparent 60%)"
-              : "radial-gradient(280px circle at 100% 0%, rgba(139,92,246,0.10), transparent 60%)",
+            tint === "amber"
+              ? "radial-gradient(280px circle at 100% 0%, rgba(245,158,11,0.10), transparent 60%)"
+              : "radial-gradient(280px circle at 100% 0%, rgba(217,119,6,0.10), transparent 60%)",
         }}
       />
       <div className="relative">

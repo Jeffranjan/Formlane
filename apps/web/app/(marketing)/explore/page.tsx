@@ -32,7 +32,7 @@ export default async function ExplorePage() {
       <section className="px-6 pb-10 pt-12 sm:pt-20">
         <Reveal className="mx-auto max-w-3xl text-center">
           <Badge variant="secondary" className="mx-auto mb-5">
-            <Compass className="size-3 text-indigo-300" />
+            <Compass className="size-3 text-amber-300" />
             Explore
           </Badge>
           <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-semibold leading-[1.06] tracking-tight">
@@ -68,8 +68,8 @@ export default async function ExplorePage() {
 function EmptyState() {
   return (
     <div className="surface-1 mx-auto max-w-xl rounded-3xl px-8 py-16 text-center">
-      <div className="mx-auto mb-5 flex size-12 items-center justify-center rounded-2xl border border-white/[0.06] bg-gradient-to-br from-indigo-500/10 to-violet-500/10">
-        <Compass className="size-5 text-indigo-300" />
+      <div className="mx-auto mb-5 flex size-12 items-center justify-center rounded-2xl border border-white/[0.06] bg-gradient-to-br from-amber-500/10 to-amber-400/10">
+        <Compass className="size-5 text-amber-300" />
       </div>
       <h2 className="font-display text-lg font-semibold tracking-tight">
         No public forms yet
@@ -99,7 +99,7 @@ function FormPreviewCard({
   return (
     <Link
       href={`/f/${form.slug}`}
-      className="group relative block h-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/60"
+      className="group relative block h-full rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60"
     >
       <div className="surface-1 relative h-full overflow-hidden rounded-2xl p-6 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-white/[0.12] group-hover:bg-white/[0.04]">
         <div
@@ -107,7 +107,7 @@ function FormPreviewCard({
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{
             background:
-              "radial-gradient(420px circle at 30% 0%, rgba(99,102,241,0.12), transparent 60%)",
+              "radial-gradient(420px circle at 30% 0%, rgba(245,158,11,0.12), transparent 60%)",
           }}
         />
         <div className="relative">

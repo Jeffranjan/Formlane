@@ -100,7 +100,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-5xl text-center">
           <Reveal>
             <Badge variant="secondary" className="mx-auto mb-7">
-              <Sparkles className="size-3 text-violet-300" />
+              <Sparkles className="size-3 text-amber-300" />
               <span>Now in public beta — free during preview</span>
             </Badge>
           </Reveal>
@@ -221,7 +221,7 @@ export default function LandingPage() {
                     <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground/70">
                       Step {s.n}
                     </span>
-                    <span className="size-2 rounded-full bg-gradient-to-br from-indigo-400 to-violet-400 shadow-[0_0_12px_rgba(139,92,246,0.6)]" />
+                    <span className="size-2 rounded-full bg-gradient-to-br from-amber-400 to-yellow-400 shadow-[0_0_12px_rgba(217,119,6,0.6)]" />
                   </div>
                   <h3 className="font-display text-lg font-semibold tracking-tight">
                     {s.title}
@@ -257,7 +257,7 @@ export default function LandingPage() {
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <div className="mt-6 flex items-center gap-3 border-t border-white/[0.05] pt-4">
-                    <span className="inline-flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/70 to-violet-500/70 text-[11px] font-semibold text-white">
+                    <span className="inline-flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-amber-500/70 to-amber-400/70 text-[11px] font-semibold text-white">
                       {t.name[0]}
                     </span>
                     <div>
@@ -282,7 +282,7 @@ export default function LandingPage() {
                 className="pointer-events-none absolute inset-0 -z-10"
                 style={{
                   background:
-                    "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(99,102,241,0.18), transparent 65%)",
+                    "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(245,158,11,0.18), transparent 65%)",
                 }}
               />
               <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-semibold leading-tight tracking-tight">
@@ -330,11 +330,11 @@ function FeatureCard({
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
           background:
-            "radial-gradient(450px circle at var(--mx,50%) var(--my,50%), rgba(99,102,241,0.10), transparent 60%)",
+            "radial-gradient(450px circle at var(--mx,50%) var(--my,50%), rgba(245,158,11,0.10), transparent 60%)",
         }}
       />
       <div className="relative">
-        <div className="mb-5 inline-flex size-10 items-center justify-center rounded-xl border border-white/[0.06] bg-gradient-to-br from-indigo-500/15 to-violet-500/15 text-indigo-200">
+        <div className="mb-5 inline-flex size-10 items-center justify-center rounded-xl border border-white/[0.06] bg-gradient-to-br from-amber-500/15 to-amber-400/15 text-amber-200">
           {icon}
         </div>
         <h3 className="font-display text-base font-semibold tracking-tight">

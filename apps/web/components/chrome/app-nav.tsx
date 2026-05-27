@@ -126,12 +126,12 @@ export function AppNav({ user }: AppNavProps) {
               type="button"
               aria-label="Account menu"
               className={cn(
-                "group relative inline-flex size-8 items-center justify-center overflow-hidden rounded-full border border-white/10 text-[12px] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
-                "bg-gradient-to-br from-indigo-500/80 via-violet-500/80 to-cyan-500/80",
-                "shadow-[0_0_0_1px_rgba(255,255,255,0.04)] hover:shadow-[0_0_24px_-6px_rgba(139,92,246,0.55)]",
+                "group relative inline-flex size-8 items-center justify-center overflow-hidden rounded-full border border-amber-400/20 text-[12px] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60",
+                "bg-gradient-to-br from-amber-500 via-amber-400 to-yellow-400",
+                "shadow-[0_0_0_1px_rgba(255,255,255,0.04)] hover:shadow-[0_0_24px_-6px_rgba(245,158,11,0.55)]",
               )}
             >
-              <span className="text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
+              <span className="text-black drop-shadow-[0_1px_2px_rgba(0,0,0,0.2)]">
                 {initials || "U"}
               </span>
             </button>

@@ -100,10 +100,10 @@ export function MarketingNav() {
           <Link
             href="/sign-up"
             className={cn(
-              "shimmer group inline-flex items-center gap-1 overflow-hidden rounded-full px-3.5 py-1.5 text-[13px] font-medium text-white",
-              "border border-white/10",
-              "bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500",
-              "shadow-[0_0_0_1px_rgba(99,102,241,0.25),0_8px_24px_-8px_rgba(99,102,241,0.55)]",
+              "shimmer group inline-flex items-center gap-1 overflow-hidden rounded-full px-3.5 py-1.5 text-[13px] font-medium text-black",
+              "border border-amber-400/20",
+              "bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400",
+              "shadow-[0_0_0_1px_rgba(245,158,11,0.25),0_8px_24px_-8px_rgba(245,158,11,0.55)]",
               "transition-transform duration-200 hover:-translate-y-px active:translate-y-0",
             )}
           >

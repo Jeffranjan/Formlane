@@ -72,7 +72,7 @@ export default async function ResponsesPage({ params }: ResponsesPageProps) {
       {/* Hero */}
       <header className="mb-10">
         <div className="flex items-start gap-4">
-          <div className="flex size-11 items-center justify-center rounded-xl border border-white/[0.06] bg-gradient-to-br from-indigo-500/15 to-violet-500/15 text-indigo-200">
+          <div className="flex size-11 items-center justify-center rounded-xl border border-white/[0.06] bg-gradient-to-br from-amber-500/15 to-amber-400/15 text-amber-200">
             <FileText className="size-5" />
           </div>
           <div className="min-w-0">

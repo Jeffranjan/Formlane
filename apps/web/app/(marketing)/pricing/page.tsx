@@ -160,7 +160,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       className={cn(
         "relative h-full rounded-2xl border bg-[linear-gradient(180deg,rgba(255,255,255,0.025)_0%,rgba(255,255,255,0)_70%),var(--color-card)] p-7 shadow-[0_1px_0_rgba(255,255,255,0.04)_inset,0_18px_44px_-22px_rgba(0,0,0,0.55)] transition-all duration-300 hover:-translate-y-0.5",
         plan.highlighted
-          ? "border-transparent ring-1 ring-indigo-500/40 shadow-[0_0_0_1px_rgba(99,102,241,0.35),0_24px_60px_-20px_rgba(99,102,241,0.45)]"
+          ? "border-transparent ring-1 ring-amber-500/40 shadow-[0_0_0_1px_rgba(245,158,11,0.35),0_24px_60px_-20px_rgba(245,158,11,0.45)]"
           : "border-white/[0.06] hover:border-white/[0.12]",
       )}
     >
@@ -170,13 +170,13 @@ function PlanCard({ plan }: { plan: Plan }) {
           className="pointer-events-none absolute inset-0 -z-10 rounded-2xl"
           style={{
             background:
-              "radial-gradient(ellipse 80% 70% at 50% 0%, rgba(99,102,241,0.18), transparent 70%)",
+              "radial-gradient(ellipse 80% 70% at 50% 0%, rgba(245,158,11,0.18), transparent 70%)",
           }}
         />
       )}
       {plan.badge && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <Badge className="border-indigo-400/40 bg-indigo-500/30 px-3 py-1 text-[11px] text-white">
+          <Badge className="border-amber-400/40 bg-amber-500/30 px-3 py-1 text-[11px] text-white">
             {plan.badge}
           </Badge>
         </div>
@@ -202,7 +202,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       <ul className="my-7 space-y-2.5">
         {plan.features.map((f) => (
           <li key={f} className="flex items-start gap-2.5 text-sm">
-            <CheckCircle2 className="mt-[2px] size-4 shrink-0 text-indigo-300/90" />
+            <CheckCircle2 className="mt-[2px] size-4 shrink-0 text-amber-300/90" />
             <span className="text-foreground/90">{f}</span>
           </li>
         ))}
