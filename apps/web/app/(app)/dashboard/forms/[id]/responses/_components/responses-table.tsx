@@ -445,36 +445,52 @@ function AnswerSummary({
   answers: Answer[];
   fields: FormField[];
 }) {
+  const [expanded, setExpanded] = useState(false);
+
   if (answers.length === 0) {
     return (
       <span className="italic text-muted-foreground">No answers</span>
     );
   }
 
-  const preview = answers.slice(0, 3);
-  const overflow = answers.length - preview.length;
+  const visibleAnswers = expanded ? answers : answers.slice(0, 3);
+  const overflow = answers.length - 3;
 
   return (
     <div className="flex flex-wrap items-center gap-1.5">
-      {preview.map((a) => {
+      {visibleAnswers.map((a) => {
         const field = fields.find((f) => f.id === a.fieldId);
         const label = field?.label ?? "Field";
         return (
           <span
             key={a.id}
-            className="inline-flex max-w-[260px] items-center gap-1 rounded-md border border-white/[0.05] bg-white/[0.025] px-2 py-0.5 text-[12px]"
+            className="inline-flex items-center gap-1 rounded-md border border-white/[0.05] bg-white/[0.025] px-2 py-0.5 text-[12px]"
+            title={`${label}: ${formatAnswerValue(a.value)}`}
           >
-            <span className="text-muted-foreground/80">{label}:</span>
-            <span className="truncate text-foreground">
+            <span className="shrink-0 text-muted-foreground/80">{label}:</span>
+            <span className="text-foreground">
               {formatAnswerValue(a.value)}
             </span>
           </span>
         );
       })}
-      {overflow > 0 && (
-        <Badge variant="outline" className="px-2 py-0.5">
+      {overflow > 0 && !expanded && (
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="inline-flex items-center rounded-md border border-white/[0.10] bg-white/[0.04] px-2 py-0.5 text-[12px] font-medium text-foreground/80 transition-colors hover:bg-white/[0.08] hover:text-foreground cursor-pointer"
+        >
           +{overflow} more
-        </Badge>
+        </button>
+      )}
+      {expanded && overflow > 0 && (
+        <button
+          type="button"
+          onClick={() => setExpanded(false)}
+          className="inline-flex items-center rounded-md border border-white/[0.10] bg-white/[0.04] px-2 py-0.5 text-[12px] font-medium text-muted-foreground transition-colors hover:bg-white/[0.08] hover:text-foreground cursor-pointer"
+        >
+          Show less
+        </button>
       )}
     </div>
   );
