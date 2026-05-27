@@ -1,6 +1,6 @@
 # ⚡ Formlane
 
-A Typeform-style form builder built on a tRPC monorepo. Create, publish, and analyse forms — all in one place. End-to-end type-safe, with shared Zod schemas and routers across the API and the web app.
+A Typeform-style form builder built on a tRPC monorepo. Create, publish, and analyse forms — all in one place. End-to-end type-safe, with shared Zod schemas and routers across the API and the web app. Built for the (http://ChaiCode.com)[Chaicode] Hackathon 
 
 ---
 
@@ -26,7 +26,7 @@ A Typeform-style form builder built on a tRPC monorepo. Create, publish, and ana
 
 | URL | Credentials |
 |-----|-------------|
-| Web app: `http://localhost:3000` | `demo@formlane.dev` / `demo1234` |
+| Web app: `http://localhost:3000` | `demo@chaiforms.dev` / `demo1234` |
 | API: `http://localhost:8000` | — |
 | API docs (Scalar): `http://localhost:8000/docs` | — |
 | OpenAPI spec: `http://localhost:8000/openapi.json` | — |
@@ -91,7 +91,7 @@ pnpm --filter @repo/database db:migrate
 pnpm --filter @repo/database seed
 ```
 
-Creates the demo user (`demo@formlane.dev` / `demo1234`) and 3 published public forms. The seeder is idempotent — safe to re-run.
+Creates the demo user (`demo@chaiforms.dev` / `demo1234`) and 3 published public forms. The seeder is idempotent — safe to re-run.
 
 ### 6. Start the apps
 
