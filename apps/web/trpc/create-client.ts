@@ -15,8 +15,16 @@ interface CreateTRPCHttpBatchClientClientOpts {
 
 export const createTRPCHttpBatchClientClient = (opts?: CreateTRPCHttpBatchClientClientOpts) => {
   const c = opts?.enableStreaming ? httpBatchStreamLink : httpLink;
+
+  // Server-side (RSC) needs the full external URL; client-side uses the
+  // relative /trpc path which Next.js rewrites to the API.
+  const isServer = typeof window === "undefined";
+  const url = isServer
+    ? (process.env.API_URL ?? env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/trpc")
+    : (env.NEXT_PUBLIC_API_URL ?? "/trpc");
+
   return c({
-    url: env.NEXT_PUBLIC_API_URL ?? "/trpc",
+    url,
     headers: opts?.headers,
     fetch(url, options) {
       return fetch(url, {
