@@ -1,0 +1,21 @@
+{
+  "name": "@repo/test-utils",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./arbitraries": "./src/arbitraries/index.ts"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "fast-check": "^3.23.2"
+  },
+  "peerDependencies": {
+    "vitest": "^3.2.4"
+  }
+}

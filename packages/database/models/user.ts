@@ -15,6 +15,9 @@ export const usersTable = pgTable("users", {
   email: varchar("email", { length: 255 }).notNull().unique(),
   emailVerified: boolean("email_verified").default(false),
 
+  passwordHash: text("password_hash"), // null when only OAuth
+  isAdmin: boolean("is_admin").default(false).notNull(), // Req. 21.13
+
   profileImageUrl: text("profile_image_url"),
 
   createdAt: timestamp("created_at").defaultNow(),

@@ -2,16 +2,26 @@
   "name": "@repo/trpc",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "test": "vitest --run",
+    "test:watch": "vitest"
+  },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@repo/test-utils": "workspace:*",
+    "@types/express": "^5.0.6",
     "dotenv-cli": "^11.0.0",
-    "typescript": "^5.9.3"
+    "fast-check": "^3.23.2",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
   },
   "dependencies": {
+    "@repo/database": "workspace:*",
     "@repo/services": "workspace:*",
     "@trpc/client": "^11.8.1",
     "@trpc/server": "^11.8.1",
+    "drizzle-orm": "0.45.1",
     "trpc-to-openapi": "^3.1.0",
     "zod": "^4.3.5"
   }

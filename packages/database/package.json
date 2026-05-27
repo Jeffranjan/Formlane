@@ -2,20 +2,27 @@
   "name": "@repo/database",
   "version": "1.0.0",
   "scripts": {
-    "db:migrate": "dotenv -- drizzle-kit migrate",
-    "db:generate": "dotenv -- drizzle-kit generate",
-    "dev": "dotenv -- drizzle-kit studio"
+    "db:migrate": "dotenv -e ../../.env -- drizzle-kit migrate",
+    "db:generate": "dotenv -e ../../.env -- drizzle-kit generate",
+    "dev": "dotenv -e ../../.env -- drizzle-kit studio",
+    "seed": "dotenv -e ../../.env -- tsx seed.ts",
+    "test": "vitest --run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@repo/test-utils": "workspace:*",
     "@types/pg": "^8.16.0",
     "dotenv-cli": "^11.0.0",
     "drizzle-kit": "^0.31.8",
+    "fast-check": "^3.23.2",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
   },
   "dependencies": {
+    "@node-rs/argon2": "^2.0.2",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "pg": "^8.16.3",

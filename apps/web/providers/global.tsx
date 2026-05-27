@@ -17,7 +17,9 @@ const queryClient = new QueryClient({
   },
 });
 
-export const GlobalProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const GlobalProviders: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [createTRPCHttpBatchClientClient()],
@@ -27,13 +29,24 @@ export const GlobalProviders: React.FC<{ children: React.ReactNode }> = ({ child
     <QueryClientProvider client={queryClient}>
       <NextThemesProvider
         attribute="class"
-        defaultTheme="light"
-        enableSystem
+        defaultTheme="dark"
+        forcedTheme="dark"
+        enableSystem={false}
         disableTransitionOnChange
       >
         <trpc.Provider queryClient={queryClient} client={trpcClient}>
           {children}
-          <Toaster />
+          <Toaster
+            theme="dark"
+            position="bottom-right"
+            toastOptions={{
+              classNames: {
+                toast:
+                  "!bg-[rgba(23,24,28,0.85)] !backdrop-blur-xl !border-white/10 !text-foreground !shadow-2xl",
+                description: "!text-muted-foreground",
+              },
+            }}
+          />
         </trpc.Provider>
       </NextThemesProvider>
     </QueryClientProvider>

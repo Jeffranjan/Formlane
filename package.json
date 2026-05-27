@@ -4,6 +4,7 @@
   "scripts": {
     "build": "dotenv -- turbo build",
     "dev": "dotenv -- turbo dev",
+    "test": "turbo run test",
     "db:generate": "dotenv -- turbo db:generate",
     "db:migrate": "dotenv -- turbo db:migrate",
     "lint": "turbo run lint",
@@ -11,6 +12,7 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "drizzle-kit": "^0.31.8",
     "prettier": "^3.7.4",
     "turbo": "^2.7.2",
     "typescript": "5.9.2"
@@ -20,6 +22,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "dotenv-cli": "^11.0.0"
+    "dotenv-cli": "^11.0.0",
+    "motion": "^12.23.6"
   }
 }
