@@ -11,6 +11,7 @@ import {
   QrCodeIcon,
   Trash2Icon,
 } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "~/components/ui/button";
 import {
   DropdownMenu,
@@ -46,7 +47,12 @@ export function FormRowActions({ formId, formSlug, formTitle, formStatus }: Form
   const deleteForm = trpc.forms.delete.useMutation({
     onSuccess: () => {
       setDeleteDialogOpen(false);
+      toast.success("Form deleted");
       utils.forms.listMine.invalidate();
+      router.refresh();
+    },
+    onError: (err) => {
+      toast.error(err.message ?? "Failed to delete form");
     },
   });
 
@@ -59,6 +65,7 @@ export function FormRowActions({ formId, formSlug, formTitle, formStatus }: Form
   function handleCopyLink() {
     const url = `${window.location.origin}/f/${formSlug}`;
     navigator.clipboard.writeText(url);
+    toast.success("Link copied to clipboard");
   }
 
   const isPublished = formStatus === "published";

@@ -393,6 +393,7 @@ export function FormEditor({ initialForm }: FormEditorProps) {
     onSuccess: () => {
       toast.success("Form deleted");
       router.push("/dashboard");
+      router.refresh();
     },
     onError: (err) => toast.error(err.message ?? "Failed to delete form"),
   });
