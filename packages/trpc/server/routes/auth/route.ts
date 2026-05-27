@@ -141,7 +141,7 @@ export const authRouter = router({
         summary: "Invalidate the current session",
       },
     })
-    .input(z.void())
+    .input(z.object({}).optional())
     .output(z.object({ success: z.boolean() }))
     .mutation(async ({ ctx }) => {
       if (ctx.session) {
