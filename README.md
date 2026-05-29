@@ -1,6 +1,6 @@
 # ⚡ Formlane
 
-A Typeform-style form builder built on a tRPC monorepo. Create, publish, and analyse forms — all in one place. End-to-end type-safe, with shared Zod schemas and routers across the API and the web app. Built for the [http://ChaiCode.com](Chaicode) Hackathon 
+A Typeform-style form builder built on a tRPC monorepo. Create, publish, and analyse forms — all in one place. End-to-end type-safe, with shared Zod schemas and routers across the API and the web app. Built for the [ChaiCode](http://ChaiCode.com) Hackathon 
 
 ---
 
