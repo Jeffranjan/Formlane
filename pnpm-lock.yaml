@@ -11,9 +11,6 @@ importers:
       dotenv-cli:
         specifier: ^11.0.0
         version: 11.0.0
-      motion:
-        specifier: ^12.23.6
-        version: 12.40.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     devDependencies:
       drizzle-kit:
         specifier: ^0.31.8
@@ -226,6 +223,9 @@ importers:
       lucide-react:
         specifier: ^0.562.0
         version: 0.562.0(react@19.2.0)
+      motion:
+        specifier: ^12.23.6
+        version: 12.40.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next:
         specifier: 16.1.0
         version: 16.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
