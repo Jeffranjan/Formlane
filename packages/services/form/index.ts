@@ -1,7 +1,7 @@
 import { db } from "@repo/database";
-import { formsTable, fieldsTable } from "@repo/database/schema";
+import { formsTable, fieldsTable, responsesTable } from "@repo/database/schema";
 import { fieldSchema, type Field } from "@repo/database/validators/field";
-import { eq, and, asc, sql } from "drizzle-orm";
+import { eq, and, asc, sql, count } from "drizzle-orm";
 import type { SelectForm, SelectField } from "@repo/database/schema";
 import SlugService from "../slug/index";
 import { z } from "zod";
@@ -83,7 +83,7 @@ export interface FormWithFields extends SelectForm {
 }
 
 export interface ListMineResult {
-  items: SelectForm[];
+  items: (SelectForm & { responseCount: number })[];
   page: number;
   pageSize: number;
   total: number;
@@ -233,8 +233,34 @@ class FormService {
       .from(formsTable)
       .where(whereClause);
 
+    // Fetch response counts for all returned forms in one query
+    const formIds = rows.map((r) => r.id);
+    const responseCounts =
+      formIds.length > 0
+        ? await db
+            .select({
+              formId: responsesTable.formId,
+              responseCount: count(responsesTable.id),
+            })
+            .from(responsesTable)
+            .where(
+              sql`${responsesTable.formId} = ANY(ARRAY[${sql.join(
+                formIds.map((id) => sql`${id}::uuid`),
+                sql`, `,
+              )}])`,
+            )
+            .groupBy(responsesTable.formId)
+        : [];
+
+    const responseCountMap = new Map(
+      responseCounts.map((r) => [r.formId, r.responseCount]),
+    );
+
     return {
-      items: rows,
+      items: rows.map((row) => ({
+        ...row,
+        responseCount: responseCountMap.get(row.id) ?? 0,
+      })),
       page,
       pageSize,
       total: countResult?.count ?? 0,
