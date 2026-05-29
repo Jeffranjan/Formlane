@@ -40,6 +40,7 @@ export default async function AnalyticsPage({ params }: AnalyticsPageProps) {
     id: (f.id as string) ?? "",
     label: f.label as string,
     type: f.type as string,
+    config: (f.config ?? {}) as Record<string, unknown>,
   }));
 
   return (

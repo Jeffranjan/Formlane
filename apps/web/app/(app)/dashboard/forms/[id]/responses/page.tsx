@@ -34,12 +34,13 @@ export default async function ResponsesPage({ params }: ResponsesPageProps) {
     responsesResult = { items: [], page: 1, pageSize: 25, total: 0 };
   }
 
-  const fields: Array<{ id: string; label: string; type: string }> = (
+  const fields: Array<{ id: string; label: string; type: string; config?: Record<string, unknown> }> = (
     form.fields ?? []
-  ).map((f: { id?: string; label: string; type: string }) => ({
+  ).map((f: { id?: string; label: string; type: string; config?: unknown }) => ({
     id: f.id ?? "",
     label: f.label,
     type: f.type,
+    config: (f.config ?? {}) as Record<string, unknown>,
   }));
 
   return (

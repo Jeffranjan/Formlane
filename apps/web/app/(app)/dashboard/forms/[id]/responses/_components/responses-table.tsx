@@ -40,6 +40,7 @@ interface FormField {
   id: string;
   label: string;
   type: string;
+  config?: Record<string, unknown>;
 }
 
 interface Answer {
@@ -66,9 +67,29 @@ interface ResponsesTableProps {
   initialTotal: number;
 }
 
-function formatAnswerValue(value: unknown): string {
+function formatAnswerValue(value: unknown, field?: FormField): string {
   if (value === null || value === undefined) return "—";
+
+  // Resolve option IDs → labels for select/dropdown fields
+  if (field && ["single_select", "dropdown", "multi_select"].includes(field.type)) {
+    const options = (field.config?.options ?? []) as Array<{ id: string; label: string }>;
+
+    if (Array.isArray(value)) {
+      // multi_select: array of option IDs
+      const labels = value.map((v) => {
+        const opt = options.find((o) => o.id === v);
+        return opt ? opt.label : String(v);
+      });
+      return labels.join(", ");
+    }
+
+    // single_select / dropdown: single option ID
+    const opt = options.find((o) => o.id === value);
+    if (opt) return opt.label;
+  }
+
   if (Array.isArray(value)) return value.join(", ");
+  if (typeof value === "boolean") return value ? "Yes" : "No";
   if (typeof value === "object") return JSON.stringify(value);
   return String(value);
 }
@@ -455,11 +476,11 @@ function AnswerSummary({
           <span
             key={a.id}
             className="inline-flex items-center gap-1 rounded-md border border-white/5 bg-white/2.5 px-2 py-0.5 text-[12px]"
-            title={`${label}: ${formatAnswerValue(a.value)}`}
+            title={`${label}: ${formatAnswerValue(a.value, field)}`}
           >
             <span className="shrink-0 text-muted-foreground/80">{label}:</span>
             <span className="text-foreground">
-              {formatAnswerValue(a.value)}
+              {formatAnswerValue(a.value, field)}
             </span>
           </span>
         );

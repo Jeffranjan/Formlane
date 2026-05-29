@@ -1,0 +1,29 @@
+name: Keep Render API Alive
+
+# Pings the API every ~14 minutes to prevent Render's free tier from spinning
+# down after 15 minutes of inactivity.
+
+on:
+  schedule:
+    # Every 14 minutes. GitHub Actions cron runs in UTC, but for "every N minutes"
+    # the timezone doesn't matter.
+    - cron: "*/14 * * * *"
+  # Allow manual trigger from the Actions tab for testing
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /health
+        run: |
+          echo "Pinging API at $(date -u)"
+          response=$(curl -sS -o /tmp/body -w "%{http_code}" --max-time 90 \
+            https://formlane-api.onrender.com/health)
+          echo "HTTP status: $response"
+          cat /tmp/body
+          echo
+          if [ "$response" -ne 200 ]; then
+            echo "::error::Health check failed with status $response"
+            exit 1
+          fi

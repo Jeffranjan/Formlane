@@ -44,6 +44,7 @@ export interface FieldInfo {
   id: string;
   label: string;
   type: string;
+  config?: Record<string, unknown>;
 }
 
 interface AnalyticsChartsProps {
@@ -274,10 +275,12 @@ export function AnalyticsCharts({
         }
 
         if (dist.type === "options") {
-          const data = Object.entries(dist.counts).map(([name, count]) => ({
-            name,
-            count,
-          }));
+          // Resolve option IDs → human-readable labels using field config
+          const options = (field.config?.options ?? []) as Array<{ id: string; label: string }>;
+          const data = Object.entries(dist.counts).map(([id, count]) => {
+            const opt = options.find((o) => o.id === id);
+            return { name: opt ? opt.label : id, count };
+          });
           return (
             <BarChartCard
               key={field.id}
